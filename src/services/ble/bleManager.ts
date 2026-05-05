@@ -9,7 +9,7 @@
 
 import type { MetricPoint, BleDevice } from '../../types';
 
-const USE_MOCK = __DEV__; // auto-mock in dev
+const USE_MOCK = true; // auto-mock in dev
 
 // ─── Mock Data Generator ────────────────────────────────────
 

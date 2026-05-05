@@ -17,12 +17,13 @@
       "bundleIdentifier": "com.statifly.app",
       "infoPlist": {
         "NSBluetoothAlwaysUsageDescription": "Statifly needs Bluetooth to connect to your sport sensor.",
-        "NSLocationWhenInUseUsageDescription": "Statifly needs location to show your position on the map."
+        "NSLocationWhenInUseUsageDescription": "Statifly needs location to show your position on the map.",
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#0D0D0D"
       },
       "package": "com.statifly.app",
@@ -44,6 +45,18 @@
       ],
       "expo-location",
       "expo-asset"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "3a426563-7af4-4269-9fc6-429775bb7ca8"
+      }
+    },
+    "owner": "estebandev10",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/3a426563-7af4-4269-9fc6-429775bb7ca8"
+    }
   }
 }

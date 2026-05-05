@@ -21,6 +21,12 @@ npx expo run:ios
 npx expo run:android
 ```
 
+## Deploy new version app with Expo Go
+```bash
+npx eas update --branch preview --message "Message the new version"
+```
+
+
 > **Note**: BLE features require a dev build (`npx expo run:ios`), not Expo Go.
 > In development mode, the app uses a mock BLE manager that generates fake data.
 

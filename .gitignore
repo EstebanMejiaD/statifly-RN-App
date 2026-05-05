@@ -1,0 +1,77 @@
+# ─── Node ─────────────────────────────────────────────
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── Expo ────────────────────────────────────────────
+
+.expo/
+.expo-shared/
+dist/
+web-build/
+
+# ─── Build outputs ───────────────────────────────────
+
+build/
+*.apk
+*.aab
+*.ipa
+
+# ─── Native (cuando uses prebuild/eject) ─────────────
+
+android/
+ios/
+
+# ─── Metro bundler ───────────────────────────────────
+
+.metro-cache/
+
+# ─── Logs ────────────────────────────────────────────
+
+logs/
+*.log
+
+# ─── Environment variables ───────────────────────────
+
+.env
+.env.*
+!.env.example
+
+# ─── TypeScript ──────────────────────────────────────
+
+*.tsbuildinfo
+
+# ─── Mac / Windows basura ────────────────────────────
+
+.DS_Store
+Thumbs.db
+
+# ─── IDEs ───────────────────────────────────────────
+
+.vscode/
+.idea/
+
+# ─── Testing ─────────────────────────────────────────
+
+coverage/
+
+# ─── Misc ───────────────────────────────────────────
+
+*.lock
+
+# ⚠️ Mantén estos archivos:
+
+# package-lock.json (SI usas npm)
+
+# yarn.lock (SI usas yarn)
+
+# pnpm-lock.yaml (SI usas pnpm)
+
+# ─── Assets (opcional) ───────────────────────────────
+
+# Si luego generas assets automáticamente puedes ignorarlos:
+
+# assets/generated/

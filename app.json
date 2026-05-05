@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "Statifly",
+    "slug": "statifly",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "scheme": "statifly",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0D0D0D"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.statifly.app",
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "Statifly needs Bluetooth to connect to your sport sensor.",
+        "NSLocationWhenInUseUsageDescription": "Statifly needs location to show your position on the map."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0D0D0D"
+      },
+      "package": "com.statifly.app",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "BLUETOOTH_SCAN",
+        "BLUETOOTH_CONNECT"
+      ]
+    },
+    "plugins": [
+      [
+        "react-native-ble-plx",
+        {
+          "isBackgroundEnabled": false,
+          "modes": [
+            "central"
+          ]
+        }
+      ],
+      "expo-location",
+      "expo-asset"
+    ]
+  }
+}

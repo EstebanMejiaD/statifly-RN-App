@@ -23,7 +23,7 @@ npx expo run:android
 
 ## Deploy new version app with Expo Go
 ```bash
-npx eas update --branch preview --message "Message the new version"
+eas update --branch preview --message "Message the new version"
 ```
 
 

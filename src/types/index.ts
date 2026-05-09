@@ -49,17 +49,18 @@ export interface SessionMetrics {
 
 // ─── User ───────────────────────────────────────────────────
 
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  avatarUrl?: string;
-}
+// export interface User {
+//   id: string;
+//   name: string;
+//   email: string;
+//   avatarUrl?: string;
+// }
 
 // ─── Navigation ─────────────────────────────────────────────
 
 export type RootStackParamList = {
   Login: undefined;
+  Register: undefined;
   MainTabs: undefined;
   LiveSession: undefined;
   SessionDetail: { sessionId: string };

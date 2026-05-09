@@ -14,6 +14,7 @@ import { SFButton } from '@/components/ui/SFButton';
 import { colors, fontSize, spacing } from '@/utils/theme';
 import { authService } from '@/api/services/auth.service';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useAuthStore } from '@/store/useAuthStore';
 
 
 
@@ -28,16 +29,14 @@ export function LoginScreen({ navigation }: Props) {
 
   const [loading, setLoading] = useState(false);
 
+  const { login } = useAuthStore();
+
   async function handleLogin() {
     try {
       setLoading(true);
 
-      await authService.login({
-        email,
-        password,
-      });
-
-      navigation.replace('MainTabs');
+      await login(email, password);
+      
     } catch (error: any) {
 
       Alert.alert(

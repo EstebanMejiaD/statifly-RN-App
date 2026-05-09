@@ -38,29 +38,44 @@ export const authService = {
 
       return response.data;
     } catch (error: any) {
-        if (error instanceof AxiosError) {
-            console.log({Error: error.response?.data})
-            throw new Error(error.response?.data?.message || 'Error desconocido');
-        }
-        console.log('Ocurrio un error: '+error.message)
+      if (error instanceof AxiosError) {
+        console.log({ Error: error.response?.data });
+        throw new Error(error.response?.data?.message || "Error desconocido");
+      }
+      console.log("Ocurrio un error: " + error.message);
       throw error;
     }
   },
 
   async register(data: RegisterDto): Promise<ApiResponse<User>> {
     try {
-        const response = await api.post<ApiResponse<User>>(
-      endpoints.auth.register,
-      data,
-    );
+      const response = await api.post<ApiResponse<User>>(
+        endpoints.auth.register,
+        data,
+      );
 
-    return response.data;
-    } catch (error:any) {
-        if (error instanceof AxiosError) {
-            console.log({Error: error.response?.data})
-            throw new Error(error.response?.data?.message || 'Error desconocido');
-        }
-        console.log('Ocurrio un error: '+error.message)
+      return response.data;
+    } catch (error: any) {
+      if (error instanceof AxiosError) {
+        console.log({ Error: error.response?.data });
+        throw new Error(error.response?.data?.message || "Error desconocido");
+      }
+      console.log("Ocurrio un error: " + error.message);
+      throw error;
+    }
+  },
+
+  async getMe(): Promise<ApiResponse<User>> {
+    try {
+      const response = await api.get<ApiResponse<User>>(endpoints.auth.me);
+
+      return response.data;
+    } catch (error: any) {
+      if (error instanceof AxiosError) {
+        console.log({ Error: error.response?.data });
+        throw new Error(error.response?.data?.message || "Error desconocido");
+      }
+      console.log("Ocurrio un error: " + error.message);
       throw error;
     }
   },

@@ -1,1 +1,1 @@
-export const API_URL = 'https://prefix-unfazed-cargo.ngrok-free.dev/api/v1';
+export const API_URL = 'https://statifly-api.onrender.com/api/v1';

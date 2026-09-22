@@ -1,15 +1,12 @@
 import './src/api/interceptors';
 
-import React, { useCallback } from 'react';
+import React, { useEffect } from 'react';
 
 import { StatusBar } from 'expo-status-bar';
-
 import * as SplashScreen from 'expo-splash-screen';
-
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { AppNavigator } from './src/navigation/AppNavigator';
-
 import { useAuthBootstrap } from './src/hooks/useAuthBootstrap';
 
 SplashScreen.preventAutoHideAsync();
@@ -17,9 +14,9 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const { loading } = useAuthBootstrap();
 
-  const onLayoutRootView = useCallback(async () => {
+  useEffect(() => {
     if (!loading) {
-      await SplashScreen.hideAsync();
+      SplashScreen.hideAsync();
     }
   }, [loading]);
 
@@ -28,9 +25,8 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider onLayout={onLayoutRootView}>
+    <SafeAreaProvider>
       <StatusBar style="light" />
-
       <AppNavigator />
     </SafeAreaProvider>
   );

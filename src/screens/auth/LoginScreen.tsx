@@ -18,10 +18,11 @@ import { useAuthStore } from '@/store/useAuthStore';
 
 
 
-type Props = NativeStackScreenProps<
-  RootStackParamList,
-  'Login'
->;
+type Props =
+  NativeStackScreenProps<
+    RootStackParamList,
+    'Login'
+  >;
 
 export function LoginScreen({ navigation }: Props) {
   const [email, setEmail] = useState('');
@@ -55,14 +56,14 @@ export function LoginScreen({ navigation }: Props) {
           <Text style={styles.title}>Statifly</Text>
 
           <Text style={styles.subtitle}>
-            Performance tracking for athletes
+            Monitorea, escala y explota tu máximo potencial
           </Text>
         </View>
 
         <View style={styles.form}>
           <SFInput
-            label="Email"
-            placeholder="example@email.com"
+            label="Correo"
+            placeholder="usuario@statifly.com"
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -70,7 +71,7 @@ export function LoginScreen({ navigation }: Props) {
           />
 
           <SFInput
-            label="Password"
+            label="Contraseña"
             placeholder="••••••••"
             secureTextEntry
             value={password}
@@ -78,7 +79,7 @@ export function LoginScreen({ navigation }: Props) {
           />
 
           <SFButton
-            title="Sign In"
+            title="Iniciar sesión"
             onPress={handleLogin}
             loading={loading}
           />
@@ -86,14 +87,14 @@ export function LoginScreen({ navigation }: Props) {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>
-            Don't have an account?
+            ¿No tienes una cuenta?
           </Text>
 
           <TouchableOpacity
             onPress={() => navigation.navigate('Register')}
           >
             <Text style={styles.registerText}>
-              Create Account
+              Crear cuenta
             </Text>
           </TouchableOpacity>
         </View>

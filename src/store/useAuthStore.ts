@@ -2,53 +2,52 @@ import { create } from 'zustand';
 import { User } from '../types/auth';
 import { authService } from '../api/services/auth.service';
 import { removeToken, saveToken } from '../utils/token';
-
-
+import { authEvents } from '../api/auth.events';
 
 interface AuthState {
   user: User | null;
   token: string | null;
-
   isAuthenticated: boolean;
 
   login: (
     email: string,
-    password: string
+    password: string,
   ) => Promise<void>;
 
   logout: () => Promise<void>;
 }
 
-export const useAuthStore =
-  create<AuthState>((set) => ({
-    user: null,
-    token: null,
+export const useAuthStore = create<AuthState>((set) => ({
+  user: null,
+  token: null,
+  isAuthenticated: false,
 
-    isAuthenticated: false,
+  login: async (email, password) => {
+    const response = await authService.login({
+      email,
+      password,
+    });
 
-    login: async (email, password) => {
-      const response =
-        await authService.login({
-          email,
-          password,
-        });
+    await saveToken(response.token);
 
-      await saveToken(response.token);
+    set({
+      token: response.token,
+      user: response.data,
+      isAuthenticated: true,
+    });
+  },
 
-      set({
-        token: response.token,
-        user: response.data,
-        isAuthenticated: true,
-      });
-    },
+  logout: async () => {
+    await removeToken();
 
-    logout: async () => {
-      await removeToken();
+    set({
+      token: null,
+      user: null,
+      isAuthenticated: false,
+    });
+  },
+}));
 
-      set({
-        token: null,
-        user: null,
-        isAuthenticated: false,
-      });
-    },
-  }));
+authEvents.setUnauthorizedHandler(() => {
+  useAuthStore.getState().logout();
+});

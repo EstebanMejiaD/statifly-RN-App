@@ -3,6 +3,7 @@ import { api } from "../client";
 import { endpoints } from "../endpoints";
 import { ApiResponse, AuthResponse } from "@/types/api";
 import { AxiosError } from "axios";
+import { getApiErrorMessage } from "../api-error";
 
 export interface LoginDto {
   email: string;
@@ -38,12 +39,8 @@ export const authService = {
 
       return response.data;
     } catch (error: any) {
-      if (error instanceof AxiosError) {
-        console.log({ Error: error.response?.data });
-        throw new Error(error.response?.data?.message || "Error desconocido");
-      }
       console.log("Ocurrio un error: " + error.message);
-      throw error;
+      throw new Error(getApiErrorMessage(error));
     }
   },
 

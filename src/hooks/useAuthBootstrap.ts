@@ -1,37 +1,45 @@
 import { useEffect, useState } from 'react';
 
-import { getToken } from '@/utils/token';
-
+import { getToken, removeToken } from '@/utils/token';
 import { authService } from '@/api/services/auth.service';
 import { useAuthStore } from '@/store/useAuthStore';
 
-
 export function useAuthBootstrap() {
-  const [loading, setLoading] =
-    useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let mounted = true;
+
     async function bootstrap() {
       try {
         const token = await getToken();
+
+        // No existe una sesión almacenada
         if (!token) {
           return;
         }
 
-        const user =
-          await authService.getMe();
+        // Validamos el token contra el backend
+        const response = await authService.getMe();
 
+        if (!mounted) {
+          return;
+        }
 
         useAuthStore.setState({
           token,
-          user: user.data,
+          user: response.data,
           isAuthenticated: true,
         });
       } catch (error) {
-        console.log(
-          'Error restoring session',
-          error
-        );
+        console.log('Error restoring session:', error);
+
+        // El token ya no es válido
+        await removeToken();
+
+        if (!mounted) {
+          return;
+        }
 
         useAuthStore.setState({
           token: null,
@@ -39,11 +47,17 @@ export function useAuthBootstrap() {
           isAuthenticated: false,
         });
       } finally {
-        setLoading(false);
+        if (mounted) {
+          setLoading(false);
+        }
       }
     }
 
     bootstrap();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return {

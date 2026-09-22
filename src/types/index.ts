@@ -27,25 +27,6 @@ export interface BleDevice {
 
 // ─── Sessions ───────────────────────────────────────────────
 
-export type SessionStatus = 'idle' | 'recording' | 'paused' | 'completed';
-
-export interface Session {
-  id: string;
-  userId: string;
-  startedAt: number;      // epoch ms
-  endedAt: number | null;
-  status: SessionStatus;
-  sport: string;
-  metrics: SessionMetrics;
-}
-
-export interface SessionMetrics {
-  duration: number;        // seconds
-  distance: number;        // meters
-  maxSpeed: number;        // m/s
-  avgSpeed: number;        // m/s
-  totalPoints: number;
-}
 
 // ─── User ───────────────────────────────────────────────────
 
@@ -61,7 +42,7 @@ export interface SessionMetrics {
 export type RootStackParamList = {
   Login: undefined;
   Register: undefined;
-  MainTabs: undefined;
+  Main: undefined;
   LiveSession: undefined;
   SessionDetail: { sessionId: string };
 };

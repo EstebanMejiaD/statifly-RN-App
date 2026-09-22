@@ -25,10 +25,11 @@ import {
 import { authService } from '@/api/services/auth.service';
 import { CompetitiveLevel, DominantFoot, Gender } from '@/types/auth';
 
-type Props = NativeStackScreenProps<
-  RootStackParamList,
-  'Register'
->;
+type Props =
+  NativeStackScreenProps<
+    RootStackParamList,
+    'Register'
+  >;
 
 
 

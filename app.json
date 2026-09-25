@@ -7,11 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "scheme": "statifly",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#0D0D0D"
-    },
+
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.statifly.app",
@@ -21,6 +17,7 @@
         "ITSAppUsesNonExemptEncryption": false
       }
     },
+
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
@@ -33,7 +30,16 @@
         "BLUETOOTH_CONNECT"
       ]
     },
+
     "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#0D0D0D"
+        }
+      ],
       [
         "react-native-ble-plx",
         {
@@ -45,17 +51,22 @@
       ],
       "expo-location",
       "expo-asset",
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-font"
     ],
+
     "extra": {
       "eas": {
         "projectId": "3a426563-7af4-4269-9fc6-429775bb7ca8"
       }
     },
+
     "owner": "estebandev10",
+
     "runtimeVersion": {
       "policy": "appVersion"
     },
+
     "updates": {
       "url": "https://u.expo.dev/3a426563-7af4-4269-9fc6-429775bb7ca8"
     }
